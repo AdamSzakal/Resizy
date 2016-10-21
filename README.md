@@ -1,4 +1,4 @@
-# RESIZY 👉👈
+# RESIZY 👉👈 / 👈👉
 
 ## Save your fragile designer wrists and get resizy, yo.
 
