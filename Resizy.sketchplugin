@@ -1,13 +1,9 @@
 // (shift cmd ctrl a)
-var layerHeight = selection[0].frame().height();
-var layerWidth = selection[0].frame().width();
-log("size is " + layerHeight + " by " + layerWidth)
-
 function createDialog(layerWidth, layerHeight)
 {
 	var alert = COSAlertWindow.new();
 
-	function createTextFieldWithLavel(label,defaultValue) {
+	function createTextFieldWithLabel(label,defaultValue) {
 			alert.addTextLabelWithValue(label);
 			alert.addTextFieldWithValue(defaultValue);
 	}
@@ -15,17 +11,28 @@ function createDialog(layerWidth, layerHeight)
 	alert.setMessageText("Rename Selected Layers");
 
 	// Name
-	createTextFieldWithLavel("Width:", layerWidth);
+	createTextFieldWithLabel("Width:", layerWidth);
 
 	// Interator
-	createTextFieldWithLavel("Height",layerHeight);
+	createTextFieldWithLabel("Height",layerHeight);
 
 	// Actions buttons.
 	alert.addButtonWithTitle('OK');
 	alert.addButtonWithTitle('Cancel');
-	alert.setMessageText("Rename Selected Layers");
+	alert.setMessageText("TIME TO GET RESIZY");
 	return alert;
 }
 
+var layerHeight = selection[0].frame().height();
+var layerWidth = selection[0].frame().width();
 var alert = createDialog(layerWidth, layerHeight);
-var options=alert.runModal();
+alert.runModal();
+
+var newWidth = alert.viewAtIndex(1).stringValue();
+var newHeight = alert.viewAtIndex(3).stringValue();
+
+for (i = 0; i < selection.length; i++) {
+	selection[i].frame().setWidth(newWidth);
+	selection[i].frame().setHeight(newHeight);
+	log("resized layer number " + i);
+}
