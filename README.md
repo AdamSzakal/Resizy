@@ -12,7 +12,7 @@ Supported features:
 * Getting resizy with multiple layers.
 
 To be implemented:
-* Math Operators.
+* ~~Math Operators~~
 * Custom resizing point
 * World Peace.
 
