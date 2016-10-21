@@ -1,0 +1,31 @@
+// (shift cmd ctrl a)
+var layerHeight = selection[0].frame().height();
+var layerWidth = selection[0].frame().width();
+log("size is " + layerHeight + " by " + layerWidth)
+
+function createDialog(layerWidth, layerHeight)
+{
+	var alert = COSAlertWindow.new();
+
+	function createTextFieldWithLavel(label,defaultValue) {
+			alert.addTextLabelWithValue(label);
+			alert.addTextFieldWithValue(defaultValue);
+	}
+
+	alert.setMessageText("Rename Selected Layers");
+
+	// Name
+	createTextFieldWithLavel("Width:", layerWidth);
+
+	// Interator
+	createTextFieldWithLavel("Height",layerHeight);
+
+	// Actions buttons.
+	alert.addButtonWithTitle('OK');
+	alert.addButtonWithTitle('Cancel');
+	alert.setMessageText("Rename Selected Layers");
+	return alert;
+}
+
+var alert = createDialog(layerWidth, layerHeight);
+var options=alert.runModal();
