@@ -36,3 +36,4 @@ for (i = 0; i < selection.length; i++) {
 	selection[i].frame().setHeight(newHeight);
 	log("resized layer number " + i);
 }
+log("Resized all layers and life is gud");
