@@ -1,8 +1,11 @@
 // (shift cmd ctrl a)
+
+//This function is based on the RenameIT dialog
 function createDialog(layerWidth, layerHeight)
 {
 	var alert = COSAlertWindow.new();
 
+	//Function to generate 
 	function createTextFieldWithLabel(label,defaultValue) {
 			alert.addTextLabelWithValue(label);
 			alert.addTextFieldWithValue(defaultValue);
@@ -23,17 +26,26 @@ function createDialog(layerWidth, layerHeight)
 	return alert;
 }
 
+//Get frame of the first selected layer in order to display them in the dialog
 var layerHeight = selection[0].frame().height();
 var layerWidth = selection[0].frame().width();
+
 var alert = createDialog(layerWidth, layerHeight);
-alert.runModal();
+var responseCode = alert.runModal();
 
-var newWidth = alert.viewAtIndex(1).stringValue();
-var newHeight = alert.viewAtIndex(3).stringValue();
+handleAlertResponse(alert, responseCode);
 
-for (i = 0; i < selection.length; i++) {
-	selection[i].frame().setWidth(newWidth);
-	selection[i].frame().setHeight(newHeight);
-	log("resized layer number " + i);
+function handleAlertResponse(alert, responseCode) {
+	if (responseCode == "1000") {
+		
+		var newWidth = alert.viewAtIndex(1).stringValue();
+		var newHeight = alert.viewAtIndex(3).stringValue();
+
+		for (i = 0; i < selection.length; i++) {
+			selection[i].frame().setWidth(newWidth);
+			selection[i].frame().setHeight(newHeight);
+			log("resized layer number " + i);
+		}
+		log("Resized all layers and life is gud");
+	}
 }
-log("Resized all layers and life is gud");
