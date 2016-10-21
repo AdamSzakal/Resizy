@@ -7,7 +7,7 @@ Do you ever get tired of selecting a layer on the artboard, dragging your poor m
 It's time to get resizy, brother.
 
 Supported features:
-* One handed shortcut: **cmd + ctrl + shift + a** (Never accept a shortcut which requires two hands. You're better than that.)
+* One handed shortcut: **CMD + CTRL + SHIFT + A** (Never accept a shortcut which requires two hands. You're better than that.)
 * Getting resizy with a single layer.
 * Getting resizy with multiple layers.
 
