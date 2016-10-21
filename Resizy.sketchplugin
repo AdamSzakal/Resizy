@@ -14,10 +14,10 @@ function createDialog(layerWidth, layerHeight)
 	alert.setMessageText("Rename Selected Layers");
 
 	// Name
-	createTextFieldWithLabel("Width:", layerWidth);
+	createTextFieldWithLabel("Change width from " + layerWidth + "px:", layerWidth);
 
 	// Interator
-	createTextFieldWithLabel("Height",layerHeight);
+	createTextFieldWithLabel("Change height from " + layerHeight + "px:", layerHeight);
 
 	// Actions buttons.
 	alert.addButtonWithTitle('OK');
@@ -38,8 +38,24 @@ handleAlertResponse(alert, responseCode);
 function handleAlertResponse(alert, responseCode) {
 	if (responseCode == "1000") {
 		
-		var newWidth = alert.viewAtIndex(1).stringValue();
-		var newHeight = alert.viewAtIndex(3).stringValue();
+		var widthInput = alert.viewAtIndex(1).stringValue();
+		var heightInput = alert.viewAtIndex(3).stringValue();
+
+		var newWidth = 0;
+		var newHeight = 0;
+
+		if (widthInput.match(/^[+|*|\-|\/]/)) {
+			newWidth = eval(layerWidth + widthInput);
+			log(newWidth);
+		} else {
+			newWidth = widthInput;
+		};
+
+		if (heightInput.match(/^[+|*|\-|\/]/)) {
+			newHeight = eval(layerHeight + heightInput);
+		} else {
+			newHeight = heightInput;
+		};
 
 		for (i = 0; i < selection.length; i++) {
 			selection[i].frame().setWidth(newWidth);
