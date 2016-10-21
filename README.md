@@ -13,6 +13,7 @@ Supported features:
 
 To be implemented:
 * Math Operators.
+* Custom resizing point
 * World Peace.
 
 
